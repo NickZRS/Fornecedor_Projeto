@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-8 m-auto">
+      <form [formGroup]="formGroup">
+        <div class="mb-3">
+          <label for="nome" class="form-label"> Nome: </label>
+          <input
+            type="text"
+            formControlName="nome"
+            class="form-control"
+            id="nome"
+            placeholder="Nome"
+          />
+        </div>
+        <div class="mb-3">
+            <label for="ativo" class="form-label">Ativo?</label>
+            <input 
+            type="checkbox" 
+            formControlName="ativo" 
+            id="ativo">
+        </div>
+
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoria:</label>
+            <select id="categoria" formControlName="categoria" id="categoria">
+                <option value="Regional">Regional</option>
+                <option value="Nacional">Nacional</option>
+                <option value="Internacional">Internacional</option>
+            </select>
+        </div>
+  
+        <div class="mb-3">
+          <label for="contato" class="form-label">Contato</label>
+          <input
+            type="text"
+            formControlName="contato"
+            class="form-control"
+            id="contato"
+            placeholder="Contato"
+          />
+        </div>
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary" (click)="save()">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Ativo?</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Contato</th>
+        <th class="d-flex justify-content-end" scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let supplier of suppliers">
+        <th scope="row">{{ supplier.id }}</th>
+        <td>{{ supplier.nome }}</td>
+        <td>{{ supplier.ativo }}</td>
+        <td>{{ supplier.categoria }}</td>
+        <td>{{ supplier.contato }}</td>
+        <td class="d-flex justify-content-end">
+          <button class="btn btn-danger me-1" (click)="remove(supplier)">
+            Excluir
+          </button>
+          <button class="btn btn-primary" (click)="edit(supplier)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
